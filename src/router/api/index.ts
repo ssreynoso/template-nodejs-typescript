@@ -1,5 +1,6 @@
 import express, { Application } from 'express'
-import generalRouter            from '@/router/api/general.router'
+
+import generalRouter from '@/router/api/general.router'
 
 export const routerApi = function (app: Application) {
     const router_api_v1 = express.Router()

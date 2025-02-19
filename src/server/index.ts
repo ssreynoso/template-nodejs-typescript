@@ -1,18 +1,20 @@
-import express, { Application, Request, Response } from 'express'
-import http, {Server as HttpServer} from 'http'
+import http, { Server as HttpServer } from 'http'
+
 import cors from 'cors'
-import { routerApi } from '../router/api'
+import express, { Application, Request, Response } from 'express'
+
 import { config } from '../config'
+import { routerApi } from '../router/api'
 
 export class Server {
-    private app       : Application
+    private app: Application
     private httpServer: HttpServer
-    private port      : string
+    private port: string
 
     constructor() {
-        this.app        = express()
+        this.app = express()
         this.httpServer = http.createServer(this.app)
-        this.port       = config.APP_PORT
+        this.port = config.APP_PORT
 
         this.middlewares()
         this.routes()

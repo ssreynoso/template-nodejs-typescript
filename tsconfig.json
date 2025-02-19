@@ -1,36 +1,24 @@
 {
     "compilerOptions": {
-        /* Visit https://aka.ms/tsconfig to read more about this file */
-        /* Projects */
-
-        /* Language and Environment */
-        "target": "ES2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-
-        /* Modules */
-        "module": "commonjs",
-        "rootDir": "./src",
-        "resolveJsonModule": true,
-
-        /* JavaScript Support */
-
-        /* Emit */
-        "sourceMap": true,
-        "outDir": "./dist",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-
-        /* Type Checking */
         "strict": true,
-
-        /* Completeness */
+        "moduleDetection": "force",
+        "module": "ESNext",
+        "target": "ESNext",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "resolveJsonModule": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "sourceMap": true,
+        "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true,
-
-        /* Module Resolution */
+        "moduleResolution": "node",
         "baseUrl": "./",
         "paths": {
             "@/*": ["src/*"]
         }
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"],
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
 }
