@@ -1,10 +1,13 @@
 import http, { Server as HttpServer } from 'http'
 
 import cors from 'cors'
-import express, { Application, Request, Response } from 'express'
+import express, { Application } from 'express'
 
 import { config } from '../config'
-import { routerApi } from '../router/api'
+import { initializeRoutes } from '../router/api'
+
+import errorHandlerMiddleware from '@/middlewares/error-handler'
+import notFoundMiddleware from '@/middlewares/not-found'
 
 export class Server {
     private app: Application
@@ -16,26 +19,11 @@ export class Server {
         this.httpServer = http.createServer(this.app)
         this.port = config.APP_PORT
 
-        this.middlewares()
-        this.routes()
-        this.notFoundMiddleware()
-    }
-
-    private middlewares() {
-        // CORS
-        // this.app.use(cors({ origin: ['https://appv2.flexichatbot.com'] }))
         this.app.use(cors())
         this.app.use(express.json())
-    }
-
-    private routes() {
-        routerApi(this.app)
-    }
-
-    private notFoundMiddleware() {
-        this.app.use((req: Request, res: Response) => {
-            res.status(404).json({ error: 'not found' })
-        })
+        initializeRoutes(this.app)
+        this.app.use(errorHandlerMiddleware)
+        this.app.use(notFoundMiddleware)
     }
 
     listen() {

@@ -1,8 +1,8 @@
-import express, { Request, Response } from 'express'
+import express from 'express'
 
 const router = express.Router()
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', async (req, res) => {
     res.status(200).json({ server_state: true })
 })
 

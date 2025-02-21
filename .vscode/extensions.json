@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "emeraldwalk.RunOnSave",
+        "esbenp.prettier-vscode",
+        "rvest.vs-code-prettier-eslint",
+        "dbaeumer.vscode-eslint",
+        "usernamehw.errorlens"
+    ]
+}
