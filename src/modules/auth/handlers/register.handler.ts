@@ -11,7 +11,7 @@ export const registerHandler = async (req: Request, res: Response, next: NextFun
 
         const newUser = await UsersRepository.create(userData)
 
-        res.status(201).json({ newUser })
+        res.status(201).json(newUser)
     } catch (error) {
         next(error)
     }

@@ -3,11 +3,10 @@ import http, { Server as HttpServer } from 'http'
 import cors from 'cors'
 import express, { Application } from 'express'
 
-import { config } from '../config'
-import { initializeRoutes } from '../router/api'
-
+import { APP_PORT } from '@/config'
 import errorHandlerMiddleware from '@/middlewares/error-handler'
 import notFoundMiddleware from '@/middlewares/not-found'
+import { initializeRoutes } from '@/router/api'
 
 export class Server {
     private app: Application
@@ -17,7 +16,7 @@ export class Server {
     constructor() {
         this.app = express()
         this.httpServer = http.createServer(this.app)
-        this.port = config.APP_PORT
+        this.port = APP_PORT
 
         this.app.use(cors())
         this.app.use(express.json())

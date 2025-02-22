@@ -1,7 +1,1 @@
-import * as dotenv from 'dotenv'
-
-dotenv.config()
-
-export const config = {
-    APP_PORT: process.env.PORT || '8080'
-}
+export const { APP_PORT = '8080', SALT_ROUNDS = 10 } = process.env
