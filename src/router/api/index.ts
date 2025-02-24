@@ -1,6 +1,8 @@
 import express, { Application } from 'express'
 
+import { jwtValidation } from '@/middlewares/jwt-validation'
 import authRouter from '@/modules/auth/router'
+import usersRouter from '@/modules/users/router'
 import generalRouter from '@/router/api/general.router'
 
 export const initializeRoutes = function (app: Application) {
@@ -10,6 +12,11 @@ export const initializeRoutes = function (app: Application) {
 
     router_api_v1.use('/', generalRouter)
     router_api_v1.use('/', authRouter)
+
+    // Protecting the routes below
+    router_api_v1.use(jwtValidation)
+
+    router_api_v1.use('/users', usersRouter)
 
     // router_api_v1.use('/<entity>', entity_router);
 }

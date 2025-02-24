@@ -1,11 +1,12 @@
 import bcrypt from 'bcrypt'
 
 import { LoginUserInput } from '../schemas/login-user.schema'
+import { PrismaUser } from '../types'
 
 import { BadRequest } from '@/errors'
 import prismadb from '@/lib/prismadb'
 
-export const loginUser = async (input: LoginUserInput) => {
+export const loginUser = async (input: LoginUserInput): Promise<PrismaUser> => {
     const { username, email, password } = input
 
     const user = await prismadb.user.findFirst({
@@ -24,10 +25,5 @@ export const loginUser = async (input: LoginUserInput) => {
         throw new BadRequest('Invalid credentials')
     }
 
-    return {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        createdAt: user.createdAt
-    }
+    return user
 }

@@ -1,5 +1,6 @@
 import http, { Server as HttpServer } from 'http'
 
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express, { Application } from 'express'
 
@@ -20,6 +21,7 @@ export class Server {
 
         this.app.use(cors())
         this.app.use(express.json())
+        this.app.use(cookieParser())
         initializeRoutes(this.app)
         this.app.use(errorHandlerMiddleware)
         this.app.use(notFoundMiddleware)
