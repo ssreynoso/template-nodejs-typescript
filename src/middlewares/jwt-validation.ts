@@ -7,18 +7,19 @@ import { SessionJWT } from '@/types/express'
 
 export const jwtValidation = (req: Request, res: Response, next: NextFunction) => {
     const token = req.cookies.access_token
+
     req.session = { user: null }
 
     try {
-        const data = jwt.verify(token, JWT_SECRET!)
+        const data = jwt.verify(token, JWT_SECRET!) as SessionJWT
 
-        req.session.user = data as SessionJWT
+        req.session.user = data
 
         next()
     } catch (error) {
-        // if (error instanceof jwt.TokenExpiredError) {
-        //     return res.status(401).send('Token expired')
-        // }
+        if (error instanceof jwt.TokenExpiredError) {
+            next(new Unauthorized('Token expired'))
+        }
 
         if (error instanceof jwt.JsonWebTokenError) {
             next(new Unauthorized('Unauthorized'))

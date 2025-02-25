@@ -10,7 +10,7 @@ export const logoutHandler = async (req: Request, res: Response, next: NextFunct
         return
     }
 
-    res.clearCookie('access_token').json({
+    res.clearCookie('access_token').clearCookie('refresh_token').json({
         message: 'Logout successful'
     })
 }

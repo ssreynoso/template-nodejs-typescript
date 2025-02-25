@@ -11,7 +11,7 @@ export const initializeRoutes = function (app: Application) {
     app.use('/api/v1', router_api_v1)
 
     router_api_v1.use('/', generalRouter)
-    router_api_v1.use('/', authRouter)
+    router_api_v1.use('/auth', authRouter)
 
     // Protecting the routes below
     router_api_v1.use(jwtValidation)
