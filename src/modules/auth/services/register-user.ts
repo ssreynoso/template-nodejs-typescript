@@ -1,10 +1,9 @@
 import bcrypt from 'bcrypt'
 
-import { CreateUserInput } from '../schemas/create-user.schema'
-
 import { SALT_ROUNDS } from '@/config'
 import { BadRequest } from '@/errors'
 import prismadb from '@/lib/prismadb'
+import { CreateUserInput } from '@/modules/users/schemas/create-user.schema'
 
 export const registerUser = async (input: CreateUserInput) => {
     const { username, email, password } = input

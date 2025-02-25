@@ -15,7 +15,7 @@ export const generateUserAccessToken = (user: UserToken) => {
             username: user.username
         },
         JWT_SECRET!,
-        { expiresIn: 5 } // 20 segundos
+        { expiresIn: '24h' } // 24 horas
     )
 
     return accessToken
@@ -28,7 +28,7 @@ export const generateUserRefreshToken = (user: UserToken) => {
             username: user.username
         },
         JWT_REFRESH_SECRET!,
-        { expiresIn: 10 } // 7 días
+        { expiresIn: '7d' } // 7 días
     )
 
     return refreshToken

@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { UsersRepository } from '@/modules/users/repository'
+import { AuthRepository } from '../repository'
+
 import { createUserSchema } from '@/modules/users/schemas/create-user.schema'
 
 export const registerHandler = async (req: Request, res: Response, next: NextFunction) => {
@@ -9,7 +10,7 @@ export const registerHandler = async (req: Request, res: Response, next: NextFun
     try {
         const userData = createUserSchema.parse(body)
 
-        const newUser = await UsersRepository.create(userData)
+        const newUser = await AuthRepository.createUser(userData)
 
         res.status(201).json(newUser)
     } catch (error) {

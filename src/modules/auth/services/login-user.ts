@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt'
 
 import { LoginUserInput } from '../schemas/login-user.schema'
-import { PrismaUser } from '../types'
 
 import { BadRequest } from '@/errors'
 import prismadb from '@/lib/prismadb'
+import { PrismaUser } from '@/modules/users/types'
 
 export const loginUser = async (input: LoginUserInput): Promise<PrismaUser> => {
     const { username, email, password } = input
