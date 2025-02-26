@@ -10,6 +10,9 @@
         "build": "pkgroll",
         "migrate": "node scripts/prisma-migrate.js",
         "test": "npm run db:test:reset && dotenv -e .env.test.local -- jest",
+        "test:unit": "jest --testPathPattern=unit",
+        "test:integration": "jest --testPathPattern=integration",
+        "test:e2e": "jest --testPathPattern=e2e",
         "db:test:reset": "dotenv -e .env.test.local -- prisma migrate reset --force"
     },
     "keywords": [],
