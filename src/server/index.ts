@@ -27,6 +27,10 @@ export class Server {
         this.app.use(notFoundMiddleware)
     }
 
+    getApp() {
+        return this.app
+    }
+
     listen() {
         try {
             this.httpServer.listen(this.port, () => {
