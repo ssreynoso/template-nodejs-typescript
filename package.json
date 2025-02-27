@@ -9,7 +9,7 @@
         "start": "node dist/main.mjs",
         "build": "pkgroll",
         "migrate": "node scripts/prisma-migrate.js",
-        "test:unit": "npm run db:test:reset && dotenv -e .env.test.local -- jest --testPathPattern=unit --runInBand",
+        "test:unit": "npm run db:test:reset && dotenv -e .env.test.local -- jest --testPathPattern=unit",
         "test:integration": "npm run db:test:reset && dotenv -e .env.test.local -- jest --testPathPattern=integration",
         "test:e2e": "npm run db:test:reset && dotenv -e .env.test.local -- jest --testPathPattern=e2e",
         "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
