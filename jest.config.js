@@ -12,5 +12,10 @@ export default {
     },
     moduleNameMapper: pathsToModuleNameMapper(tsConfig.compilerOptions.paths, { prefix: '<rootDir>/' }),
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-    testPathIgnorePatterns: ['/node_modules/', '/src/__tests__/test-app-server.ts', '/src/__tests__/test-log.ts']
+    testPathIgnorePatterns: [
+        '/node_modules/',
+        '/src/__tests__/test-app-server.ts',
+        '/src/__tests__/test-log.ts',
+        '/src/__tests__/utils/*'
+    ]
 }

@@ -1,3 +1,5 @@
+import prismadb from './src/lib/prismadb'
+
 beforeAll(() => {
     jest.spyOn(console, 'log').mockImplementation(message => {
         const testPath = expect.getState().testPath || 'Unknown Test File'
@@ -12,4 +14,8 @@ beforeAll(() => {
     jest.spyOn(console, 'warn').mockImplementation(message => {
         process.stderr.write('⚠️ ' + message + '\n') // Agrega un emoji de advertencia
     })
+})
+
+afterAll(() => {
+    prismadb.$disconnect()
 })
